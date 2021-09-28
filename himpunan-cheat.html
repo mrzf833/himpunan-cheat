@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ini adalah cheat tugas himpunan
+
+    <script>
+
+        var array_soal_1 = [1, 2, 5, 6, 7, 11, 12, 13, 15, 18, 20]
+        var array_soal_2 = [2, 3, 4, 5, 6, 7, 8, 12, 13]
+        var array_soal_3 = [1, 2, 3, 6, 8, 9, 10, 13, 17, 18]
+        var array_semesta = bilangan_asli('<=', 20)
+
+
+        // contoh soal 1 page 20
+        console.log('jawaban no 1  page 20');
+        console.log(
+            irisan([
+                array_soal_1, array_soal_2
+            ])
+        );
+
+        // contoh soal 2 page 20
+        console.log('jawaban no 2 page 20');
+        console.log(
+            irisan([
+                array_soal_1, array_soal_3
+            ])
+        );
+
+        // contoh soal 3 page 20
+        console.log('jawaban no 3 page 20');
+        console.log(
+            irisan([
+                array_soal_2, array_soal_3
+            ])
+        );
+
+        // contoh soal 4 page 20
+        console.log('jawaban no 4 page 20');
+        console.log(
+            irisan([
+                array_soal_1, array_soal_2, array_soal_3
+            ])
+        );
+
+        // contoh soal 5 page 20
+        console.log('jawaban no 5 page 20');
+        console.log(
+            selisih([
+                array_soal_1, array_soal_2
+            ])
+        );
+
+        // contoh soal 6 page 20
+        console.log('jawaban no 6 page 20');
+        console.log(
+            selisih([
+                array_soal_3, array_soal_1
+            ])
+        );
+
+        // contoh soal 7 page 20
+        console.log('jawaban no 7 page 20');
+        console.log(
+            selisih([
+                array_soal_2, array_soal_3
+            ])
+        );
+
+        // contoh soal 8 page 20
+        console.log('jawaban no 8 page 20');
+        console.log(
+            beda_setangkup([
+                array_soal_2, array_soal_3
+            ])
+        );
+
+        // contoh soal 9 page 20
+        console.log('jawaban no 9 page 20');
+        console.log(
+            komplemen(
+                selisih([
+                    array_soal_1, array_soal_2
+                ]),
+                array_semesta
+            )
+        );
+
+        // contoh soal 10 page 20
+        console.log('jawaban no 10 page 20');
+        console.log(
+            beda_setangkup([
+                irisan([
+                    array_soal_1, array_soal_3
+                ]),
+                selisih([
+                    array_soal_2, array_soal_3
+                ])
+            ])
+        );
+
+        // contoh soal 1 page 21
+        console.log('jawaban no 1 page 21');
+        console.log(
+            selisih([
+                irisan([
+                    array_soal_3, array_soal_2
+                ]),
+                beda_setangkup([
+                    array_soal_1, array_soal_3
+                ])
+            ])
+        );
+         // contoh soal 2 page 21
+        console.log('jawaban no 2 page 21');
+        console.log(
+            beda_setangkup([
+                selisih([
+                    array_soal_1, array_soal_2
+                ]),
+                irisan([
+                    array_soal_3, array_soal_2
+                ])
+            ])
+        );
+        // contoh soal 3 page 21
+        console.log('jawaban no 3 page 21');
+        console.log(
+            gabungan([
+                komplemen(
+                    selisih([
+                        array_soal_3,
+                        array_soal_1
+                    ]),
+                    array_semesta
+                ),
+                beda_setangkup([
+                    array_soal_3,array_soal_2
+                ])
+            ])
+        );
+        // contoh soal 4 page 21
+        console.log('jawaban no 4 page 21');
+        console.log(
+            irisan([
+                beda_setangkup([
+                    array_soal_1, array_soal_3
+                ]),
+                beda_setangkup([
+                    selisih([
+                        array_soal_2, array_soal_3
+                    ]),
+                    komplemen(array_soal_1, array_semesta)
+                ])
+            ])
+        );
+// ------------------------------------------------------------------ function untuk himpunan ----------------------
+/* 
+    baru ada
+
+    unique_array(array)
+    sort_asc_array_value(array)
+    gabungan(array)
+    irisan(array)
+    selisih(array)
+    beda_setangkup(array)
+    bilangan_asli(operator, nilai_x)
+    komplemen(array, semesta)
+
+*/
+
+        function komplemen(array, semesta){
+            let hasil_gabungan = gabungan([
+                array,semesta
+            ])
+            hasil_gabungan = unique_array(hasil_gabungan)
+
+            let hasil_komplemen = selisih([
+                hasil_gabungan, array
+            ])
+
+            hasil_komplemen = sort_asc_array_value(hasil_komplemen)
+            return hasil_komplemen
+        }
+
+        function bilangan_asli(operator, nilai_x){
+            let hasil_bilangan_asli = []
+            for(let i = 1; eval(`i ${operator} ${nilai_x}`) ; i++){
+                hasil_bilangan_asli.push(i)
+            }
+
+            return hasil_bilangan_asli
+        }
+
+        function unique_array(array){
+            return array.filter((value, index, self) => {
+                return self.indexOf(value) == index
+            })
+        }
+
+        function sort_asc_array_value(array){
+            return array.sort(function(a, b){return a - b})
+        }
+
+        function gabungan(soal){
+            let kumpulan_gabungan = [];
+
+            soal.forEach((value_array_soal) => {
+                kumpulan_gabungan = kumpulan_gabungan.concat(value_array_soal)
+            })
+
+            kumpulan_gabungan = unique_array(kumpulan_gabungan)
+            kumpulan_gabungan = sort_asc_array_value(kumpulan_gabungan)
+            return kumpulan_gabungan
+        }
+
+        function irisan(soal){
+            let kumpulan_irisan = soal[0]
+            let kumpulan_irisan_hasil = null
+
+            soal.forEach((value_soal_array, key_soal_array) => {
+                if(key_soal_array == soal.length - 1){
+                    kumpulan_irisan = value_soal_array
+                    return
+                }
+
+                kumpulan_irisan = kumpulan_irisan.filter(value => soal[key_soal_array + 1].includes(value))
+                kumpulan_irisan_hasil = kumpulan_irisan
+            })
+
+            kumpulan_irisan_hasil = unique_array(kumpulan_irisan_hasil)
+            kumpulan_irisan_hasil = sort_asc_array_value(kumpulan_irisan_hasil)
+            return kumpulan_irisan_hasil
+        }
+
+        function selisih(soal){
+            let kumpulan_selisih = soal[0]
+            let kumpulan_selisih_hasil = null
+
+            soal.forEach((value_soal_array, key_soal_array) => {
+                if(key_soal_array == soal.length - 1){
+                    kumpulan_selisih = value_soal_array
+                    return
+                }
+
+                kumpulan_selisih = kumpulan_selisih.filter(value => !soal[key_soal_array + 1].includes(value))
+                kumpulan_selisih_hasil = kumpulan_selisih
+            })
+
+            kumpulan_selisih_hasil = unique_array(kumpulan_selisih_hasil)
+            kumpulan_selisih_hasil = sort_asc_array_value(kumpulan_selisih_hasil)
+            return kumpulan_selisih_hasil
+        }
+
+        function beda_setangkup(soal){
+            let hasil_gabungan = gabungan(soal)
+            let hasil_irisan = irisan(soal)
+
+            let hasil_selisih = selisih([hasil_gabungan, hasil_irisan])
+
+            hasil_selisih = sort_asc_array_value(hasil_selisih)
+            return hasil_selisih
+        }
+    </script>
+</body>
+</html>
